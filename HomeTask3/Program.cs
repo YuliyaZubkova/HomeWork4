@@ -6,7 +6,7 @@
 6, 1, 33 -> [6, 1, 33]
 */
 
-int[] arr = {1, 2, 5, 7, 19, 6, 1, 33};
+/* int[] arr = {1, 2, 5, 7, 19, 6, 1, 33};
 
 void PrintArray(int[] array)
 {
@@ -21,4 +21,9 @@ void PrintArray(int[] array)
 PrintArray(arr);
 Console.Write(" -> [");
 PrintArray(arr);
-Console.Write("]");
+Console.Write("]"); */
+
+
+int[,] numbers = { { 1, 2, 5, 7, 19, 6, 1, 33 }};
+foreach (int i in numbers)
+    Console.Write($"{i} ");
