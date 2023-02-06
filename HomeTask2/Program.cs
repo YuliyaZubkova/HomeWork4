@@ -1,37 +1,41 @@
-﻿// Напишите программу, которая принимает на вход число и выдаёт 
-//сумму цифр в числе. (можно написать по аналогии с задачей на факториал из лекции - Example)
+﻿/* Напишите программу, которая принимает на вход число и выдаёт 
+сумму цифр в числе. 
+ 452 -> 11
+ 82 -> 10
+ 9012 -> 12 */
 
-// 452 -> 11
-
-// 82 -> 10
-
-// 9012 -> 12
-
-
-Console.WriteLine("Введите число: ");
-string number1 = Console.ReadLine();
-int number = Convert.ToInt32(number1);
-int count = number.ToString().Length;
-
-Console.Write(MakeArray(number, count));
-int ReadInt(string message)
+int GetNumber(string message)
 {
-    Console.Write(message);
-    return Convert.ToInt32(Console.ReadLine());
+    bool isCorrect = false;
+    int result = 0;
+
+    while (!isCorrect)
+    {
+        Console.Write(message);
+        if (int.TryParse(Console.ReadLine(), out result))
+        {
+            isCorrect = true;
+        }
+        else
+        {
+            Console.WriteLine("Ввели не число");
+        }
+    }
+    return result;
 }
 
 int MakeArray(int a, int b)
 {
-int result = 0;
+    int result = 0;
 
     for (int i = 0; i < b; i++)
     {
-        result = result + a%10;
-        a = a/10;
+        result = result + a % 10;
+        a = a / 10;
     }
-
-Console.Write($"{number} -> ");
-return result;
-
+    return result;
 }
 
+int number = GetNumber("Введите число: ");
+int count = number.ToString().Length;
+Console.Write($"Сумма цифр в числе {number} равна {MakeArray(number, count)} ");
